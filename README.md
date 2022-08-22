@@ -1,30 +1,28 @@
-# edit-weechat
+# weechat-edit
 
-This simple [weechat](https://weechat.org/) plugin allows you to
-compose messages in your `$EDITOR`.
+A weechat plugin that allows you to use `$EDITOR` to compose a [longer] message.
 
-# Usage
+## Usage
 
-```sh
+``` sh
+# Basic
 /edit
-# Type some stuff
-# Save and quit
+
+# Edit your previous message
+/edit --previous
+
+# Add a key binding so you can edit your current input
+/key bind meta-E /edit
+
+# Tip: If your editor exits with code different than 0, current input won't be changed.
 ```
 
-# Configuration
+## Configuration
 
-If you'd like to customize the editor you use outside of the `$EDITOR`
-environment variable, you can set it in weechat.
-
-```sh
+``` sh
 /set plugins.var.python.edit.editor "vim -f"
 ```
 
-# Installation
+## Installation
 
-Copy the script to `~/.weechat/python/autoload`
-
-```
-mkdir -p ~/.weechat/python/autoload
-wget https://raw.githubusercontent.com/keith/edit-weechat/master/edit.py ~/.weechat/python/autoload
-```
+Just like any normal weechat plugin, copy it to `~/.weechat/python` and symlink it in `~/.weechat/python/autoload`.
